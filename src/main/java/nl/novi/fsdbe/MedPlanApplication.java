@@ -1,4 +1,4 @@
-package nl.novi.fsdfe;
+package nl.novi.fsdbe;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

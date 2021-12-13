@@ -1,4 +1,4 @@
-package nl.novi.fsdfe;
+package nl.novi.fsdbe;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
