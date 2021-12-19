@@ -10,30 +10,29 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
+@RequestMapping(value = "/employees")
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
-//    @GetMapping(value = "/employees")
-//    public ResponseEntity<Object> getEmployees() {
-//        return ResponseEntity.ok(employeeService.getEmployee());
-//    }
+    @GetMapping(value = "")
+    public ResponseEntity<Object> getEmployees() {
+        return ResponseEntity.ok(employeeService.getEmployees());
+    }
 
-    @GetMapping(value = "/employees/{id}")
+    @GetMapping(value = "/{id}")
     public ResponseEntity<Object> getEmployee(@PathVariable Long id) {
         return ResponseEntity.ok(employeeService.getEmployee(id));
     }
 
-
-
-    @DeleteMapping(value = "/employees/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Object> deleteEmployee(@PathVariable("id") Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/employees")
+    @PostMapping(value = "/")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) {
         Long newId = employeeService.addEmployee(employee);
 
@@ -43,16 +42,17 @@ public class EmployeeController {
         return ResponseEntity.created(location).build();
     }
 
-//    @GetMapping(value = "/persons/{id}/books")
-//    public ResponseEntity<Object> getPersonBooks(@PathVariable int id) {
-//        return ResponseEntity.ok(personService.getPersonBooks(id));
-//    }
-//
-//    @PostMapping(value = "/persons/{id}/books")
-//    public ResponseEntity<Object> addPersonBook(@PathVariable int id, @RequestBody Book book) {
-//        personService.addPersonBook(id, book);
-//        return ResponseEntity.created(null).build();
-//    }
-//}
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        employeeService.updateEmployee(id, employee);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Object> partialUpdateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        employeeService.partialUpdateEmployee(id, employee);
+
+        return ResponseEntity.noContent().build();
+    }
 
 }
