@@ -32,7 +32,7 @@ public class EmployeeController {
         return ResponseEntity.noContent().build();
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "")
     public ResponseEntity<Object> addEmployee(@RequestBody Employee employee) {
         Long newId = employeeService.addEmployee(employee);
 

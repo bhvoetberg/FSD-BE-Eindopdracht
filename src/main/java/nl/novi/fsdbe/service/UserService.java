@@ -57,13 +57,13 @@ public class UserService {
             user.setPassword(encryptedPassword);
             user.setEmail(userPostRequest.getEmail());
             user.setEnabled(true);
-            user.addAuthority("ROLE_USER");
-            for (String s : userPostRequest.getAuthorities()) {
-                if (!s.startsWith("ROLE_")) {
-                    s = "ROLE_" + s;
-                }
-                user.addAuthority(s);
-            }
+//            user.addAuthority("ROLE_USER");
+//            for (String s : userPostRequest.getAuthorities()) {
+//                if (!s.startsWith("ROLE_")) {
+//                    s = "ROLE_" + s;
+//                }
+//                user.addAuthority(s);
+//            }
 
             User newUser = userRepository.save(user);
             return newUser.getUsername();

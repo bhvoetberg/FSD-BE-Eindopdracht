@@ -7,13 +7,13 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class Person {
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
 
-    @Column
+    @Column(nullable = false)
     private String lastName;
 
-    @Column
+    @Column(nullable = false)
     private boolean enabled;
 
     @Id
