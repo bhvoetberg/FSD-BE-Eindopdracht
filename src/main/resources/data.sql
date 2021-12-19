@@ -1,6 +1,8 @@
 INSERT INTO employees (id, function_name, first_name, last_name, enabled)
 VALUES
-(1, 'Supervisor', 'Aap', 'Noot', true);
+(1, 'Supervisor', 'Rober', 'Voetberg', true),
+(2, 'VPK', 'Freek', 'Frans', true);
+
 
 INSERT INTO users (username, password, enabled)
 VALUES
@@ -9,8 +11,8 @@ VALUES
 
 INSERT INTO authorities (username, authority)
 VALUES
-    ('user', 'ROLE_USER'),
-    ('admin', 'ROLE_USER'),
+    ('employee', 'ROLE_EMPLOYEE'),
+    ('admin', 'ROLE_EMPLOYEE'),
     ('admin', 'ROLE_ADMIN'),
-    ('peter', 'ROLE_USER'),
-    ('peter', 'ROLE_ADMIN');
+    ('rober', 'ROLE_EMPLOYEE'),
+    ('rober', 'ROLE_ADMIN');

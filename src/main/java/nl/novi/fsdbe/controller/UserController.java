@@ -29,7 +29,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUser(username));
     }
 
-    @PostMapping(value = "")
+    @PostMapping(value = "/users")
     public ResponseEntity<Object> createUser(@RequestBody UserPostRequest userPostRequest) {
 
         String newUsername = userService.createUser(userPostRequest);

@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>nl.novi</groupId>
-    <artifactId>fsd-fe</artifactId>
+    <artifactId>fsd-be</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>fsd-fe</name>
-    <description>fsd-fe</description>
+    <description>fsd-be</description>
     <properties>
         <java.version>17</java.version>
     </properties>

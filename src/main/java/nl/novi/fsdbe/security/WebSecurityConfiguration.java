@@ -39,7 +39,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT username, authority FROM authorities AS a WHERE username=?");
-
     }
 
     @Bean
@@ -61,7 +60,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
                 .httpBasic()
                 .and()
@@ -69,7 +67,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers(PATCH,"/users/{^[\\w]$}/password").authenticated()
                 .antMatchers("/users/**").hasRole("ADMIN")
-                .antMatchers("/customers/**").hasRole("USER")
+                .antMatchers("/employees/**").hasRole("ADMIN")
+                .antMatchers("/clients/**").hasRole("EMPLOYEE")
                 .antMatchers(POST,"/authenticate").permitAll()
                 .antMatchers(GET,"/public").permitAll()
                 .anyRequest().denyAll()
