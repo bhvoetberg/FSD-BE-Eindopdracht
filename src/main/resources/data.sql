@@ -16,3 +16,11 @@ VALUES
     ('admin', 'ROLE_ADMIN'),
     ('rober', 'ROLE_EMPLOYEE'),
     ('rober', 'ROLE_ADMIN');
+
+INSERT INTO planning (id, active_planning, frequency_per_day, med_name, quantity, plan_date, plan_time)
+VALUES
+    (1, true, 1, 'Paracetamol 500mg', 1, '15-1-2022', '08:00'),
+    (2, true, 1, 'Paracetamol 500mg', 1, '15-1-2022', '12:00'),
+    (3, true, 1, 'Paracetamol 500mg', 1, '15-1-2022', '16:00'),
+    (4, true, 1, 'Paracetamol 500mg', 1, '15-1-2022', '20:00')
+;

@@ -22,7 +22,10 @@ public class Planning {
     private boolean activePlanning;
 
     @Column
-    private String planDateTime;
+    private String planDate;
+
+    @Column
+    private String planTime;
 
     @Id
     @Column(nullable = false, unique = true)
