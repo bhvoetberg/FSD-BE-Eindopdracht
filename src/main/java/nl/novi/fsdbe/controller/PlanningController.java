@@ -1,11 +1,15 @@
 package nl.novi.fsdbe.controller;
 
+import nl.novi.fsdbe.model.Employee;
+import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.service.PlanningService;
+import org.hibernate.boot.model.source.spi.PluralAttributeNature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/planning")
@@ -19,27 +23,42 @@ public class PlanningController {
         return ResponseEntity.ok(planningService.getPlanning());
     }
 
-//    @GetMapping(value = "/{username}")
-//    public ResponseEntity<Object> getUser(@PathVariable("username") String username) {
-//        return ResponseEntity.ok().body(userService.getUser(username));
-//    }
-//
-//    @PostMapping(value = "")
-//    public ResponseEntity<Object> createUser(@RequestBody UserPostRequest userPostRequest) {
-//
-//        String newUsername = userService.createUser(userPostRequest);
-//
-//        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{username}")
-//                .buildAndExpand(newUsername).toUri();
-//
-//        return ResponseEntity.created(location).build();
-//    }
-//
-//    @PutMapping(value = "/{username}")
-//    public ResponseEntity<Object> updateKlant(@PathVariable("username") String username, @RequestBody User user) {
-//        userService.updateUser(username, user);
-//        return ResponseEntity.noContent().build();
-//    }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Object> getPlanning(@PathVariable Long id) {
+        return ResponseEntity.ok(planningService.getPlanning(id));
+    }
+
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Object> deleteEmployee(@PathVariable("id") Long id) {
+        planningService.deletePlanning(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(value = "")
+    public ResponseEntity<Object> addPlanning(@RequestBody Planning planning) {
+        Long newId = planningService.addPlanning(planning);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(newId).toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> updatePlanning(@PathVariable Long id, @RequestBody Planning planning) {
+        planningService.updatePlanning(id, planning);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Object> partialUpdatePlanning(@PathVariable Long id, @RequestBody Planning planning) {
+        planningService.partialUpdatePlanning(id, planning);
+
+        return ResponseEntity.noContent().build();
+    }
+
+
 //
 //    @DeleteMapping(value = "/{username}")
 //    public ResponseEntity<Object> deleteKlant(@PathVariable("username") String username) {
