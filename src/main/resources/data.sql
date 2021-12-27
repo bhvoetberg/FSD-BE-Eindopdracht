@@ -23,3 +23,9 @@ VALUES
     (2, true, 'Paracetamol 500mg', 1, '15-1-2022', '12:00'),
     (3, true, 'Paracetamol 500mg', 1, '15-1-2022', '16:00'),
     (4, true, 'Paracetamol 500mg', 1, '15-1-2022', '20:00');
+
+INSERT INTO medicine (id, med_name, perilous, url_external_info, administer_method, dosage_form, instructions)
+VALUES
+    (1, 'Paracetamol 500mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
+    (2, 'Paracetamol 250mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
+    (3, 'Oxazepam 500mg', true, 'onbekend', 'Oraal', 'Tablet', 'Geen');

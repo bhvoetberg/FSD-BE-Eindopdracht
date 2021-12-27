@@ -30,4 +30,60 @@ public class Medicine {
     @Id
     @Column(nullable = false, unique = true)
     private Long id;
+
+    public String getMedName() {
+        return medName;
+    }
+
+    public void setMedName(String medName) {
+        this.medName = medName;
+    }
+
+    public String getPerilous() {
+        return perilous;
+    }
+
+    public void setPerilous(String perilous) {
+        this.perilous = perilous;
+    }
+
+    public String getUrlExternalInfo() {
+        return urlExternalInfo;
+    }
+
+    public void setUrlExternalInfo(String urlExternalInfo) {
+        this.urlExternalInfo = urlExternalInfo;
+    }
+
+    public String getAdministerMethod() {
+        return administerMethod;
+    }
+
+    public void setAdministerMethod(String administerMethod) {
+        this.administerMethod = administerMethod;
+    }
+
+    public String getDosageForm() {
+        return dosageForm;
+    }
+
+    public void setDosageForm(String dosageForm) {
+        this.dosageForm = dosageForm;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
