@@ -29,3 +29,10 @@ VALUES
     (1, 'Paracetamol 500mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
     (2, 'Paracetamol 250mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
     (3, 'Oxazepam 500mg', true, 'onbekend', 'Oraal', 'Tablet', 'Geen');
+
+INSERT INTO deviations (id, enabled, finding, resolution)
+VALUES
+(1, false,'Bevinding 1', 'Oplossing 1'),
+(2, true,'Bevinding 2', 'Oplossing 2'),
+(3, true,'Bevinding 3', 'Oplossing 3');
+

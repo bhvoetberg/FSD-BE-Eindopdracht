@@ -44,4 +44,17 @@ public class MedicineController {
         return ResponseEntity.created(location).build();
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Object> updateMedicine(@PathVariable Long id, @RequestBody Medicine medicine) {
+        medicineService.updateMedicine(id, medicine);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Object> partialUpdateMedicine(@PathVariable Long id, @RequestBody Medicine medicine) {
+        medicineService.partialUpdateMedicine(id, medicine);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

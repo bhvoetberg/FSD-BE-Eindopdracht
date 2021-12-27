@@ -13,7 +13,7 @@ public class Medicine {
     private String medName;
 
     @Column
-    private String perilous;
+    private boolean perilous;
 
     @Column
     private String urlExternalInfo;
@@ -39,11 +39,11 @@ public class Medicine {
         this.medName = medName;
     }
 
-    public String getPerilous() {
+    public boolean isPerilous() {
         return perilous;
     }
 
-    public void setPerilous(String perilous) {
+    public void setPerilous(boolean perilous) {
         this.perilous = perilous;
     }
 

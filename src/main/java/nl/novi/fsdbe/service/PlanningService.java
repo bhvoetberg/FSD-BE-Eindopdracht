@@ -1,7 +1,6 @@
 package nl.novi.fsdbe.service;
 
 import nl.novi.fsdbe.exception.RecordNotFoundException;
-import nl.novi.fsdbe.model.Employee;
 import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,16 +60,9 @@ public class PlanningService {
 
         if (optionalPlanning.isPresent()) {
             Planning storedPlanning = planningRepository.findById(id).orElse(null);
-            System.out.println("ID is: " + storedPlanning.getId());
-            System.out.println(planning.isEnabled());
-            System.out.println(planning.getPlanDate());
-            System.out.println(planning.getPlanTime());
-
 
             if (planning.getPlanDate() != null && !planning.getPlanDate().isEmpty()) {
-                System.out.println("Hallo");
                 storedPlanning.setPlanDate(planning.getPlanDate());
-                System.out.println(storedPlanning.getPlanDate());
             }
             if (planning.getPlanTime() != null && !planning.getPlanTime().isEmpty()) {
                 storedPlanning.setPlanTime(planning.getPlanTime());
@@ -82,7 +74,6 @@ public class PlanningService {
                 storedPlanning.setQuantity(planning.getQuantity());
             }
             if (planning.isEnabled() == true || planning.isEnabled() == false ) {
-                System.out.println("Planning " + planning.isEnabled());
                 storedPlanning.setEnabled(planning.isEnabled());
             }
             planningRepository.save(storedPlanning);
