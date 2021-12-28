@@ -1,9 +1,8 @@
 package nl.novi.fsdbe.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "planning")
@@ -25,8 +24,22 @@ public class Planning {
     private String planTime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, unique = true)
     private Long id;
+
+    @ManyToOne
+    @JsonIgnoreProperties("plannings")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "id")
+    private Medicine owner;
+
+    public Medicine getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Medicine owner) {
+        this.owner = owner;
+    }
 
     public String getMedName() {
         return medName;
