@@ -24,21 +24,21 @@ public class Planning {
     private String planTime;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
     private Long id;
 
     @ManyToOne
     @JsonIgnoreProperties("plannings")
     @JoinColumn(name = "medicine_id", referencedColumnName = "id")
-    private Medicine owner;
+    private Medicine medicine;
 
-    public Medicine getOwner() {
-        return owner;
+    public Medicine getMedicine() {
+        return medicine;
     }
 
-    public void setOwner(Medicine owner) {
-        this.owner = owner;
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
     }
 
     public String getMedName() {
@@ -88,5 +88,6 @@ public class Planning {
     public void setId(Long id) {
         this.id = id;
     }
+
 }
 

@@ -1,6 +1,9 @@
 package nl.novi.fsdbe.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,12 +29,16 @@ public class Medicine {
     private String instructions;
 
     @Id
-    @Column(nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Planning> plannings;
+    @OneToMany(
+            mappedBy = "medicine",
+            fetch = FetchType.EAGER,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @JsonIgnoreProperties("medicine")
+    private List<Planning> plannings = new ArrayList<>();
 
     public List<Planning> getPlannings() {
         return plannings;
@@ -40,8 +47,6 @@ public class Medicine {
     public void setPlannings(List<Planning> plannings) {
         this.plannings = plannings;
     }
-
-
 
     public String getMedName() {
         return medName;

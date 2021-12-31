@@ -1,7 +1,7 @@
 INSERT INTO employees (id, function_name, first_name, last_name, enabled)
 VALUES
-(1, 'Supervisor', 'Rober', 'Voetberg', true),
-(2, 'VPK', 'Freek', 'Frans', true);
+(0, 'Supervisor', 'Rober', 'Voetberg', true),
+(1, 'VPK', 'Freek', 'Frans', true);
 
 
 INSERT INTO users (username, password, enabled)
@@ -19,16 +19,16 @@ VALUES ('employee', 'ROLE_EMPLOYEE'),
 
 INSERT INTO medicine (id, med_name, perilous, url_external_info, administer_method, dosage_form, instructions)
 VALUES
-    (1, 'Paracetamol 500mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
-    (2, 'Paracetamol 250mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
-    (3, 'Oxazepam 500mg', true, 'onbekend', 'Oraal', 'Tablet', 'Geen');
+    (0, 'Paracetamol 500mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
+    (1, 'Paracetamol 250mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
+    (2, 'Oxazepam 500mg', true, 'onbekend', 'Oraal', 'Tablet', 'Geen');
 
-INSERT INTO planning (id, enabled, med_name, quantity, plan_date, plan_time, medicine_id)
-VALUES
-    (1, true, 'Paracetamol 500mg', 1, '15-1-2022', '08:00', 1),
-    (2, true, 'Paracetamol 500mg', 1, '15-1-2022', '12:00', 1),
-    (3, true, 'Paracetamol 500mg', 1, '15-1-2022', '16:00', 2),
-    (4, true, 'Paracetamol 500mg', 1, '15-1-2022', '20:00', 3);
+-- INSERT INTO planning (id, enabled, med_name, quantity, plan_date, plan_time, medicine_id)
+-- VALUES
+--     (0, true, 'Paracetamol 500mg', 1, '15-1-2022', '08:00', 2),
+--     (1, true, 'Paracetamol 500mg', 1, '15-1-2022', '12:00', 2),
+--     (2, true, 'Paracetamol 500mg', 1, '15-1-2022', '16:00', 2),
+--     (3, true, 'Paracetamol 500mg', 1, '15-1-2022', '20:00', 2);
 
 
 

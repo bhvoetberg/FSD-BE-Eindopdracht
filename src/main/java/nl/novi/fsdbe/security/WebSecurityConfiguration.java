@@ -24,14 +24,11 @@ import static org.springframework.http.HttpMethod.*;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private DataSource dataSource;
-    private JwtRequestFilter jwtRequestFilter;
+    @Autowired
+    DataSource dataSource;
 
     @Autowired
-    WebSecurityConfiguration(DataSource dataSource, JwtRequestFilter jwtRequestFilter) {
-        this.dataSource = dataSource;
-        this.jwtRequestFilter = jwtRequestFilter;
-    }
+    JwtRequestFilter jwtRequestFilter;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -72,6 +69,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/deviations/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/employees/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/medicines/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/medicine/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/planning/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/clients/**").hasRole("USER")
                 .antMatchers(POST,"/authenticate").permitAll()
