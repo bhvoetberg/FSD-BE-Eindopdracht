@@ -67,9 +67,9 @@ public class PlanningService {
             if (planning.getPlanTime() != null && !planning.getPlanTime().isEmpty()) {
                 storedPlanning.setPlanTime(planning.getPlanTime());
             }
-            if (planning.getMedName() != null && !planning.getMedName().isEmpty()) {
-                storedPlanning.setMedName(planning.getMedName());
-            }
+//            if (planning.getMedName() != null && !planning.getMedName().isEmpty()) {
+//                storedPlanning.setMedName(planning.getMedName());
+//            }
             if (planning.getQuantity() != null) {
                 storedPlanning.setQuantity(planning.getQuantity());
             }

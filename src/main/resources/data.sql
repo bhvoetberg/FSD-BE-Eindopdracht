@@ -23,19 +23,21 @@ VALUES
     ('Paracetamol 250mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),
     ('Oxazepam 500mg', true, 'onbekend', 'Oraal', 'Tablet', 'Geen');
 
-INSERT INTO planning (enabled, med_name, quantity, plan_date, plan_time, medicine_id)
+INSERT INTO deviations (enabled, finding, resolution)
 VALUES
-    (true, 'Paracetamol 500mg', 1, '15-1-2022', '08:00', 2),
-    (true, 'Paracetamol 500mg', 1, '15-1-2022', '12:00', 2),
-    (true, 'Paracetamol 500mg', 1, '15-1-2022', '16:00', 2),
-    (true, 'Paracetamol 500mg', 1, '15-1-2022', '20:00', 2);
+    (false,'Bevinding 1', 'Oplossing 1'),
+    (true,'Bevinding 2', 'Oplossing 2'),
+    (true,'Bevinding 3', 'Oplossing 3');
+
+INSERT INTO planning (enabled, quantity, plan_date, plan_time, deviation_id, medicine_id)
+VALUES
+    (true, 1, '15-1-2022', '08:00', 1, 2),
+    (true, 1, '15-1-2022', '12:00', 2, 2),
+    (true, 1, '15-1-2022', '16:00', null, 2),
+    (true, 1, '15-1-2022', '20:00', 3, 2);
 
 
--- INSERT INTO deviations (enabled, finding, resolution)
--- VALUES
--- (false,'Bevinding 1', 'Oplossing 1'),
--- (true,'Bevinding 2', 'Oplossing 2'),
--- (true,'Bevinding 3', 'Oplossing 3');
+
 
 
 

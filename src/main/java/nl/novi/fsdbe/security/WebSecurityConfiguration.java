@@ -23,21 +23,21 @@ import static org.springframework.http.HttpMethod.*;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-//
-//    @Autowired
-//    DataSource dataSource;
-//
-//    @Autowired
-//    JwtRequestFilter jwtRequestFilter;
-
-    private DataSource dataSource;
-    private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
-    WebSecurityConfiguration(DataSource dataSource, JwtRequestFilter jwtRequestFilter) {
-        this.dataSource = dataSource;
-        this.jwtRequestFilter = jwtRequestFilter;
-    }
+    DataSource dataSource;
+
+    @Autowired
+    JwtRequestFilter jwtRequestFilter;
+
+//    private DataSource dataSource;
+//    private JwtRequestFilter jwtRequestFilter;
+//
+//    @Autowired
+//    WebSecurityConfiguration(DataSource dataSource, JwtRequestFilter jwtRequestFilter) {
+//        this.dataSource = dataSource;
+//        this.jwtRequestFilter = jwtRequestFilter;
+//    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

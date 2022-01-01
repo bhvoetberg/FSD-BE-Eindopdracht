@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "planning")
 public class Planning {
 
-    @Column
-    private String medName;
+//    @Column
+//    private String medName;
 
     @Column
     private Integer quantity;
@@ -33,6 +33,10 @@ public class Planning {
     @JoinColumn(name = "medicine_id", referencedColumnName = "id")
     private Medicine medicine;
 
+    @OneToOne
+    @JoinColumn(name = "deviation_id", referencedColumnName = "id")
+    private Deviation deviation;
+
     public Medicine getMedicine() {
         return medicine;
     }
@@ -41,13 +45,13 @@ public class Planning {
         this.medicine = medicine;
     }
 
-    public String getMedName() {
-        return medName;
-    }
-
-    public void setMedName(String medName) {
-        this.medName = medName;
-    }
+//    public String getMedName() {
+//        return medName;
+//    }
+//
+//    public void setMedName(String medName) {
+//        this.medName = medName;
+//    }
 
     public Integer getQuantity() {
         return quantity;
@@ -89,5 +93,12 @@ public class Planning {
         this.id = id;
     }
 
+    public Deviation getDeviation() {
+        return deviation;
+    }
+
+    public void setDeviation(Deviation deviation) {
+        this.deviation = deviation;
+    }
 }
 
