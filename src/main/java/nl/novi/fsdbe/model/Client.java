@@ -33,7 +33,7 @@ public class Client extends Person {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties("client")
+    @JsonIgnoreProperties({"client", "plannings"})
     private List<Medicine> medicines = new ArrayList<>();
 
     public List<Medicine> getMedicines() {

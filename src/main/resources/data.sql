@@ -39,10 +39,10 @@ VALUES
 
 INSERT INTO planning (enabled, quantity, plan_date, plan_time, deviation_id, medicine_id)
 VALUES
-    (true, 1, '15-1-2022', '08:00', 1, 2),
+    (true, 1, '15-1-2022', '08:00', 1, 1),
     (true, 1, '15-1-2022', '12:00', 2, 2),
-    (true, 1, '15-1-2022', '16:00', null, 2),
-    (true, 1, '15-1-2022', '20:00', 3, 2);
+    (true, 1, '15-1-2022', '16:00', null, 3),
+    (true, 1, '15-1-2022', '20:00', 3, 3);
 
 
 
