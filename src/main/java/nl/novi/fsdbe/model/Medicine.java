@@ -40,6 +40,11 @@ public class Medicine {
     @JsonIgnoreProperties("medicine")
     private List<Planning> plannings = new ArrayList<>();
 
+    @ManyToOne
+    @JsonIgnoreProperties("medicines")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
+
     public List<Planning> getPlannings() {
         return plannings;
     }

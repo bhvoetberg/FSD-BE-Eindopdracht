@@ -1,9 +1,7 @@
 package nl.novi.fsdbe.controller;
 
-import nl.novi.fsdbe.model.Employee;
 import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.service.PlanningService;
-import org.hibernate.boot.model.source.spi.PluralAttributeNature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

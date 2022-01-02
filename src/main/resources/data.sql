@@ -17,6 +17,14 @@ VALUES ('employee', 'ROLE_EMPLOYEE'),
         ('rober', 'ROLE_ADMIN'),
         ('user', 'ROLE_USER');
 
+INSERT INTO clients (enabled, first_name, last_name, date_of_birth, photo, room_number, see_own_medication, tel_general_practitioner, tel_pharmacy)
+VALUES
+(false, 'Maecenas', 'Pellentesque', '1-1-1940', 'none', '101', true, '0123-456789', '0321-987654'),
+(true, 'Sed', 'Melesuada', '1-2-1940', 'none', '102', true, '0123-456789', '0321-987654'),
+(true, 'Lorem', 'Ipsum', '1-3-1940', 'none', '103', true, '0123-456789', '0321-987654'),
+(true, 'Donec ', 'Vulputate', '1-3-1940', 'none', '104', true, '0123-456789', '0321-987654');
+
+
 INSERT INTO medicine (med_name, perilous, url_external_info, administer_method, dosage_form, instructions)
 VALUES
     ('Paracetamol 500mg', false, 'onbekend', 'Oraal', 'Tablet', 'Geen'),

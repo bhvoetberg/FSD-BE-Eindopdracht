@@ -8,9 +8,6 @@ import javax.persistence.*;
 @Table(name = "planning")
 public class Planning {
 
-//    @Column
-//    private String medName;
-
     @Column
     private Integer quantity;
 
@@ -44,14 +41,6 @@ public class Planning {
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
     }
-
-//    public String getMedName() {
-//        return medName;
-//    }
-//
-//    public void setMedName(String medName) {
-//        this.medName = medName;
-//    }
 
     public Integer getQuantity() {
         return quantity;

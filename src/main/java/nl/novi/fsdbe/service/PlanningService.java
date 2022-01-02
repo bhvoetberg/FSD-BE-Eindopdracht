@@ -6,7 +6,6 @@ import nl.novi.fsdbe.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -67,9 +66,6 @@ public class PlanningService {
             if (planning.getPlanTime() != null && !planning.getPlanTime().isEmpty()) {
                 storedPlanning.setPlanTime(planning.getPlanTime());
             }
-//            if (planning.getMedName() != null && !planning.getMedName().isEmpty()) {
-//                storedPlanning.setMedName(planning.getMedName());
-//            }
             if (planning.getQuantity() != null) {
                 storedPlanning.setQuantity(planning.getQuantity());
             }
@@ -80,6 +76,6 @@ public class PlanningService {
         } else {
             throw new RecordNotFoundException("No valid update data present!");
         }
-
     }
+
 }
