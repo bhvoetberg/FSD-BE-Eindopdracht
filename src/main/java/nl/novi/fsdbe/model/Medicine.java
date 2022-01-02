@@ -40,19 +40,6 @@ public class Medicine {
     @JsonIgnoreProperties("medicine")
     private List<Planning> plannings = new ArrayList<>();
 
-    @ManyToOne
-    @JsonIgnoreProperties("medicines")
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private Client client;
-
-    public List<Planning> getPlannings() {
-        return plannings;
-    }
-
-    public void setPlannings(List<Planning> plannings) {
-        this.plannings = plannings;
-    }
-
     public String getMedName() {
         return medName;
     }
@@ -109,11 +96,11 @@ public class Medicine {
         this.id = id;
     }
 
-    public Client getClient() {
-        return client;
+    public List<Planning> getPlannings() {
+        return plannings;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setPlannings(List<Planning> plannings) {
+        this.plannings = plannings;
     }
 }

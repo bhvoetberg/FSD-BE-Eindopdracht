@@ -15,7 +15,7 @@ import java.util.Optional;
 public class MedicinePlanningService {
 
     @Autowired
-    MedicineRepository medicineRepository;
+    private MedicineRepository medicineRepository;
 
     @Autowired
     private PlanningRepository planningRepository;

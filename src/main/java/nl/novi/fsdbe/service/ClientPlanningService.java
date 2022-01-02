@@ -3,8 +3,10 @@ package nl.novi.fsdbe.service;
 import nl.novi.fsdbe.exception.RecordNotFoundException;
 import nl.novi.fsdbe.model.Client;
 import nl.novi.fsdbe.model.Medicine;
+import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.repository.ClientRepository;
 import nl.novi.fsdbe.repository.MedicineRepository;
+import nl.novi.fsdbe.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,25 +14,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientMedicineService {
+public class ClientPlanningService {
 
     @Autowired
-    ClientRepository clientRepository;
+    private ClientRepository clientRepository;
 
     @Autowired
-    private MedicineRepository medicineRepository;
+    private PlanningRepository planningRepository;
 
-    public void addClientMedicine(Long clientId, Long medicineId) {
+    public void addClientPlanning(Long clientId, Long planningId) {
         Optional<Client> optionalClient = clientRepository.findById(clientId);
-        Optional<Medicine> optionalMedicine = medicineRepository.findById(medicineId);
+        Optional<Planning> optionalPlanning = planningRepository.findById(planningId);
 
-        if (optionalClient.isPresent() && optionalMedicine.isPresent()) {
+        if (optionalClient.isPresent() && optionalPlanning.isPresent()) {
             Client client = optionalClient.get();
-            Medicine medicine = optionalMedicine.get();
-            medicine.setClient(client);
-            List<Medicine> medicines = client.getMedicines();
-            medicines.add(medicine);
-            medicineRepository.save(medicine);
+            Planning planning = optionalPlanning.get();
+            planning.setClient(client);
+            List<Planning> plannings = client.getPlannings();
+            plannings.add(planning);
+            planningRepository.save(planning);
         }
         else {
             throw new RecordNotFoundException("ID does not exist!");

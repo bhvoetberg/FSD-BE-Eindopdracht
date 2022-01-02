@@ -33,17 +33,8 @@ public class Client extends Person {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties({"client", "plannings"})
-    private List<Medicine> medicines = new ArrayList<>();
-
-    public List<Medicine> getMedicines() {
-        return medicines;
-    }
-
-    public void setMedicines(List<Medicine> medicines) {
-        this.medicines = medicines;
-    }
-
+    @JsonIgnoreProperties("client")
+    private List<Planning> plannings = new ArrayList<>();
 
     public String getDateOfBirth() {
         return dateOfBirth;
@@ -91,5 +82,13 @@ public class Client extends Person {
 
     public void setTelGeneralPractitioner(String telGeneralPractitioner) {
         this.telGeneralPractitioner = telGeneralPractitioner;
+    }
+
+    public List<Planning> getPlannings() {
+        return plannings;
+    }
+
+    public void setPlannings(List<Planning> plannings) {
+        this.plannings = plannings;
     }
 }

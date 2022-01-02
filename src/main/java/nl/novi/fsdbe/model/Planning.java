@@ -3,6 +3,8 @@ package nl.novi.fsdbe.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "planning")
@@ -34,13 +36,11 @@ public class Planning {
     @JoinColumn(name = "deviation_id", referencedColumnName = "id")
     private Deviation deviation;
 
-    public Medicine getMedicine() {
-        return medicine;
-    }
+    @ManyToOne
+    @JsonIgnoreProperties("plannings")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
 
-    public void setMedicine(Medicine medicine) {
-        this.medicine = medicine;
-    }
 
     public Integer getQuantity() {
         return quantity;
@@ -82,12 +82,28 @@ public class Planning {
         this.id = id;
     }
 
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+
     public Deviation getDeviation() {
         return deviation;
     }
 
     public void setDeviation(Deviation deviation) {
         this.deviation = deviation;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
 
