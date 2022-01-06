@@ -1,7 +1,8 @@
-INSERT INTO employees (id, function_name, first_name, last_name, enabled)
+INSERT INTO employees (function_name, first_name, last_name, enabled)
 VALUES
-(0, 'Supervisor', 'Rober', 'Voetberg', true),
-(1, 'VPK', 'Freek', 'Frans', true);
+('Supervisor', 'Rober', 'Voetberg', true),
+('Verzorgende', 'Freek', 'Frans', true),
+('Verpleegkundige', 'Florence', 'Nightingale', true);
 
 
 INSERT INTO users (username, password, enabled)

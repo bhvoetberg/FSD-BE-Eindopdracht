@@ -74,7 +74,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers(PATCH,"/users/{^[\\w]$}/password").authenticated()
-                .antMatchers("/users/**").hasRole("ADMIN")
+                .antMatchers("/users/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/deviations/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/employees/**").hasAnyRole("ADMIN","USER")
                 .antMatchers("/medicines/**").hasAnyRole("ADMIN","USER")
