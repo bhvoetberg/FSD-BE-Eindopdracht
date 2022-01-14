@@ -14,9 +14,6 @@ public class Client extends Person {
     private String dateOfBirth;
 
     @Column
-    private String photo;
-
-    @Column
     private boolean seeOwnMedication;
 
     @Column
@@ -27,6 +24,11 @@ public class Client extends Person {
 
     @Column
     private String telGeneralPractitioner;
+
+    @OneToOne
+    @JsonIgnoreProperties({"photo", "client"})
+    @JoinColumn(name = "photo_id", referencedColumnName = "id")
+    private Photo photo;
 
     @OneToMany(
             mappedBy = "client",
@@ -42,14 +44,6 @@ public class Client extends Person {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 
     public boolean isSeeOwnMedication() {
@@ -90,5 +84,13 @@ public class Client extends Person {
 
     public void setPlannings(List<Planning> plannings) {
         this.plannings = plannings;
+    }
+
+    public Photo getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(Photo photo) {
+        this.photo = photo;
     }
 }

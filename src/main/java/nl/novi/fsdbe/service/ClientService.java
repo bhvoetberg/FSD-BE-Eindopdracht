@@ -74,10 +74,6 @@ public class ClientService {
                 storedClient.setDateOfBirth(client.getDateOfBirth());
             }
 
-            if (client.getPhoto() != null && !client.getPhoto().isEmpty()) {
-                storedClient.setPhoto(client.getPhoto());
-            }
-
             if (client.getRoomNumber() != null && !client.getRoomNumber().isEmpty()) {
                 storedClient.setRoomNumber(client.getRoomNumber());
             }
