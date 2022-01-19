@@ -20,27 +20,6 @@ public class PhotoService {
         return newPhoto.getId();
     }
 
-//    public Iterable<Photo> getFiles() {
-//        return repository.findAll();
-//    }
-//
-//    public long uploadFile(MultipartFile file) {
-//        Photo newFile = repository.save(file);
-//        return newFile.id();
-//    }
-//
-//    public void deleteFile(long id) {
-//        if (!repository.existsById(id)) throw new RecordNotFoundException();
-//        repository.deleteById(id);
-//    }
-//
-//    public Optional<Photo> getFileById(long id) {
-//        if (!repository.existsById(id)) throw new RecordNotFoundException();
-//        return repository.findById(id);
-//    }
-//
-//    public boolean fileExistsById(long id) {
-//        return repository.existsById(id);
-//    }
+
 
 }

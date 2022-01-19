@@ -23,12 +23,30 @@ public class ClientPhotoService {
         if (optionalClient.isPresent()) {
             Client client = optionalClient.get();
             photo.setClient(client);
-            client.setPhoto(photo);
             photoRepository.save(photo);
+            System.out.println(photo.getId());
+            client.setPhoto(photo);
+            clientRepository.save(client);
         }
         else {
             throw new RecordNotFoundException("ID does not exist!");
         }
     }
+
+//    public void updateClientPhoto(Long clientId, Long photoId, Photo photo) {
+//        Optional<Client> optionalClient = clientRepository.findById(clientId);
+//        Optional<Photo> optionalPhoto = photoRepository.findById(photoId);
+//        if (optionalClient.isPresent() && optionalPhoto.isPresent()) {
+//            Client client = optionalClient.get();
+//            optionalPhoto
+//            Photo photo = optionalPhoto.get();
+//            client.setPhoto(photo);
+//            photo.setClient(client);
+//            photoRepository.save(photo);
+//        }
+//        else {
+//            throw new RecordNotFoundException("ID does not exist!");
+//        }
+//    }
 
 }

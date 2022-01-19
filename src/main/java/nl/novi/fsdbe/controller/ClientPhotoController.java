@@ -1,7 +1,6 @@
 package nl.novi.fsdbe.controller;
 
 import nl.novi.fsdbe.model.Photo;
-import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.service.ClientPhotoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,5 +19,11 @@ public class ClientPhotoController {
         clientPhotoService.addClientPhoto(id, photo);
         return ResponseEntity.created(null).build();
     }
+
+//    @PutMapping(value = "/{clientId}/{photoId}")
+//    public ResponseEntity<Object> updateClientPhoto(@PathVariable Long clientId, Long photoId, @RequestBody Photo photo) {
+//        clientPhotoService.updateClientPhoto(clientId, photoId, photo);
+//        return ResponseEntity.noContent().build();
+//    }
 
 }
