@@ -18,7 +18,7 @@ public class Photo {
 
     @Column(name = "base64")
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
+
     private String base64;
 
     @OneToOne

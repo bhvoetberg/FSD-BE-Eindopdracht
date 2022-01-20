@@ -1,6 +1,7 @@
 package nl.novi.fsdbe.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,10 +26,15 @@ public class Client extends Person {
     @Column
     private String telGeneralPractitioner;
 
-    @OneToOne
-    @JsonIgnoreProperties({"photo", "client"})
-    @JoinColumn(name = "photo_id", referencedColumnName = "id")
-    private Photo photo;
+    @Column
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    private String photo;
+
+//    @OneToOne
+//    @JsonIgnoreProperties({"photo", "client"})
+//    @JoinColumn(name = "photo_id", referencedColumnName = "id")
+//    private Photo photo;
 
     @OneToMany(
             mappedBy = "client",
@@ -86,11 +92,11 @@ public class Client extends Person {
         this.plannings = plannings;
     }
 
-    public Photo getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Photo photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 }

@@ -32,6 +32,12 @@ public class ClientController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping(value = "/{id}/photo")
+    public ResponseEntity<Object> deleteClientPhoto(@PathVariable("id") Long id) {
+        clientService.deleteClientPhoto(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping(value = "")
     public ResponseEntity<Object> addClient(@RequestBody Client client) {
         Long newId = clientService.addClient(client);
