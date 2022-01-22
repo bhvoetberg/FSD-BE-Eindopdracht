@@ -31,11 +31,6 @@ public class Client extends Person {
     @Type(type = "org.hibernate.type.TextType")
     private String photo;
 
-//    @OneToOne
-//    @JsonIgnoreProperties({"photo", "client"})
-//    @JoinColumn(name = "photo_id", referencedColumnName = "id")
-//    private Photo photo;
-
     @OneToMany(
             mappedBy = "client",
             fetch = FetchType.EAGER,

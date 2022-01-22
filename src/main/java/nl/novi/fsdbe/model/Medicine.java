@@ -37,7 +37,7 @@ public class Medicine {
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-    @JsonIgnoreProperties("medicine")
+    @JsonIgnoreProperties({"medicine", "client"})
     private List<Planning> plannings = new ArrayList<>();
 
     public String getMedName() {

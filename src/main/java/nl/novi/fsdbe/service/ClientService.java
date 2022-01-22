@@ -36,6 +36,19 @@ public class ClientService {
         }
     }
 
+    public void deleteClientPhoto(Long id) {
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        if (optionalClient.isPresent()) {
+            Client storedClient = clientRepository.findById(id).orElse(null);
+            storedClient.setPhoto(null);
+            clientRepository.save(storedClient);
+            }
+         else {
+            throw new RecordNotFoundException("ID does not exist!!!");
+        }
+    }
+
+
     public Long addClient(Client client) {
         Client newClient = clientRepository.save(client);
         return newClient.getId();
@@ -88,6 +101,10 @@ public class ClientService {
 
             if (client.getTelPharmacy() != null && !client.getTelPharmacy().isEmpty()) {
                 storedClient.setTelPharmacy(client.getTelPharmacy());
+            }
+            System.out.println(client.getPhoto());
+            if (client.getPhoto() != null && !client.getPhoto().isEmpty()) {
+                storedClient.setPhoto(client.getPhoto());
             }
 
             clientRepository.save(storedClient);
