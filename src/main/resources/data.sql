@@ -8,15 +8,14 @@ VALUES ('Supervisor', 'Rober', 'Voetberg', true),
 
 INSERT INTO users (username, password, enabled)
 VALUES ('user', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE),
-       ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE);
+       ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE),
+       ('inactive', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', FALSE);
 
 INSERT INTO authorities (username, authority)
-VALUES ('employee', 'ROLE_EMPLOYEE'),
-       ('admin', 'ROLE_EMPLOYEE'),
+VALUES ('admin', 'ROLE_EMPLOYEE'),
        ('admin', 'ROLE_ADMIN'),
-       ('rober', 'ROLE_EMPLOYEE'),
-       ('rober', 'ROLE_ADMIN'),
-       ('user', 'ROLE_USER');
+       ('user', 'ROLE_USER'),
+       ('inactive', 'ROLE_USER');
 
 INSERT INTO clients (enabled, first_name, last_name, date_of_birth, room_number, see_own_medication,
                      tel_general_practitioner, tel_pharmacy, photo)
