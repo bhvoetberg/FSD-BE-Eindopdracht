@@ -28,7 +28,7 @@ public class PlanningController {
 
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Object> deleteEmployee(@PathVariable("id") Long id) {
+    public ResponseEntity<Object> deletePlanning(@PathVariable("id") Long id) {
         planningService.deletePlanning(id);
         return ResponseEntity.noContent().build();
     }

@@ -1,6 +1,6 @@
 package nl.novi.fsdbe.controller;
 
-
+import nl.novi.fsdbe.model.Deviation;
 import nl.novi.fsdbe.model.Medicine;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
@@ -25,11 +25,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
 @WithMockUser(username = "admin", roles = {"ADMIN"})
-public class MedicineControllerIntegrationTest {
+public class DeviationControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -68,19 +69,19 @@ public class MedicineControllerIntegrationTest {
     JwtUtil jwtUtil;
 
     @Test
-    public void testEndpointMedicines() throws Exception {
-        Medicine medicine = new Medicine();
-        medicine.setMedName("Paracetamol");
-        List<Medicine> allMedicines = Arrays.asList(medicine);
+    public void testEndpointDeviations() throws Exception {
+        Deviation deviation = new Deviation();
+        deviation.setResolution("Opgelost");
+        List<Deviation> allDeviations = Arrays.asList(deviation);
 
-        BDDMockito.given(medicineService.getMedicines()).willReturn(allMedicines);
+        BDDMockito.given(deviationService.getDeviations()).willReturn(allDeviations);
 
-        mvc.perform(get("/medicines")
+        mvc.perform(get("/deviations")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].medName", is(medicine.getMedName())));
-
-
+                .andExpect(jsonPath("$[0].resolution", is(deviation.getResolution())));
     }
 }
+
+

@@ -1,7 +1,6 @@
 package nl.novi.fsdbe.controller;
 
-
-import nl.novi.fsdbe.model.Medicine;
+import nl.novi.fsdbe.model.User;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
 import org.junit.jupiter.api.Test;
@@ -29,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration
 @EnableConfigurationProperties
 @WithMockUser(username = "admin", roles = {"ADMIN"})
-public class MedicineControllerIntegrationTest {
+public class UserControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -68,19 +67,17 @@ public class MedicineControllerIntegrationTest {
     JwtUtil jwtUtil;
 
     @Test
-    public void testEndpointMedicines() throws Exception {
-        Medicine medicine = new Medicine();
-        medicine.setMedName("Paracetamol");
-        List<Medicine> allMedicines = Arrays.asList(medicine);
+    public void testEndpointUsers() throws Exception {
+        User user = new User();
+        user.setUsername("user");
+        List<User> allUsers = Arrays.asList(user);
 
-        BDDMockito.given(medicineService.getMedicines()).willReturn(allMedicines);
+        BDDMockito.given(userService.getUsers()).willReturn(allUsers);
 
-        mvc.perform(get("/medicines")
+        mvc.perform(get("/users")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].medName", is(medicine.getMedName())));
-
-
+                .andExpect(jsonPath("$[0].username", is(user.getUsername())));
     }
 }

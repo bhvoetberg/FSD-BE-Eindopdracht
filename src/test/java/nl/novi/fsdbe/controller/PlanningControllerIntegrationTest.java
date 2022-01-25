@@ -1,7 +1,6 @@
 package nl.novi.fsdbe.controller;
 
-
-import nl.novi.fsdbe.model.Medicine;
+import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
 import org.junit.jupiter.api.Test;
@@ -20,7 +19,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration
 @EnableConfigurationProperties
 @WithMockUser(username = "admin", roles = {"ADMIN"})
-public class MedicineControllerIntegrationTest {
+public class PlanningControllerIntegrationTest {
 
     @Autowired
     private MockMvc mvc;
@@ -67,20 +65,19 @@ public class MedicineControllerIntegrationTest {
     @MockBean
     JwtUtil jwtUtil;
 
+
     @Test
     public void testEndpointMedicines() throws Exception {
-        Medicine medicine = new Medicine();
-        medicine.setMedName("Paracetamol");
-        List<Medicine> allMedicines = Arrays.asList(medicine);
+        Planning planning = new Planning();
+        planning.setEnabled(true);
+        List<Planning> allPlanning = Arrays.asList(planning);
 
-        BDDMockito.given(medicineService.getMedicines()).willReturn(allMedicines);
+        BDDMockito.given(planningService.getPlanning()).willReturn(allPlanning);
 
-        mvc.perform(get("/medicines")
+        mvc.perform(get("/planning")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].medName", is(medicine.getMedName())));
-
-
+                .andExpect(jsonPath("$", hasSize(1)));
+//                    .andExpect(jsonPath("$[0].medName", is(medicine.getMedName())));
     }
 }
