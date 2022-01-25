@@ -8,8 +8,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
@@ -25,17 +24,19 @@ public class MedicineServiceIntegrationTest {
     @Mock
     Medicine medicine;
 
-//    @Test
-//    public void simpleReturnBehaviour() {
-//        // given
-//        Medicine medicineMock = Mockito.mock(Medicine.class);
-//        when(medicineMock.setMedName()).thenReturn(true);
-//
-//        // when
-//        medicineMock.setPerilous(true);
-//
-//        // then
-//        assertTrue(medicineMock.isPerilous());
-//    }
+    @Test
+    public void testGetMedicineById() {
+        Medicine medicine = new Medicine();
+
+        Mockito
+                .doReturn(medicine)
+                .when(medicineRepository);
+
+        Long idExpected = Long.valueOf(1);
+
+        Medicine found = medicineService.getMedicine(idExpected);
+
+        assertEquals(idExpected, found.getId());
+    }
 
 }

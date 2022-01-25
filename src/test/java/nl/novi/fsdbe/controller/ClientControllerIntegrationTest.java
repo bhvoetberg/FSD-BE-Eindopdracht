@@ -72,6 +72,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         public void testEndpointClients() throws Exception {
             Client client = new Client();
             client.setLastName("Jansen");
+            client.setRoomNumber("101");
+            client.setTelPharmacy("020-123456");
+            client.setTelGeneralPractitioner("030-654321");
+            client.setSeeOwnMedication(true);
             List<Client> allClients = Arrays.asList(client);
 
             BDDMockito.given(clientService.getClients()).willReturn(allClients);
@@ -80,6 +84,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$", hasSize(1)))
+                    .andExpect(jsonPath("$[0].roomNumber", is(client.getRoomNumber())))
+                    .andExpect(jsonPath("$[0].telPharmacy", is(client.getTelPharmacy())))
+                    .andExpect(jsonPath("$[0].telGeneralPractitioner", is(client.getTelGeneralPractitioner())))
+                    .andExpect(jsonPath("$[0].enabled", is(client.isEnabled())))
                     .andExpect(jsonPath("$[0].lastName", is(client.getLastName())));
 
 

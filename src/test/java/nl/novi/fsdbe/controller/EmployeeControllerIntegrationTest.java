@@ -73,6 +73,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         public void testEndpointEmployees() throws Exception {
             Employee employee = new Employee();
             employee.setLastName("De Vries");
+            employee.setFunctionName("Verpleger");
+            employee.setEnabled(true);
+
             List<Employee> allEmployees = Arrays.asList(employee);
 
             BDDMockito.given(employeeService.getEmployees()).willReturn(allEmployees);
@@ -81,6 +84,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                             .contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
                     .andExpect(jsonPath("$", hasSize(1)))
+                    .andExpect(jsonPath("$[0].functionName", is(employee.getFunctionName())))
+                    .andExpect(jsonPath("$[0].enabled", is(employee.isEnabled())))
                     .andExpect(jsonPath("$[0].lastName", is(employee.getLastName())));
         }
     }

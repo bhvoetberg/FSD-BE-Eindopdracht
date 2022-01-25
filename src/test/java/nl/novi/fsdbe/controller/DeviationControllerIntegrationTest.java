@@ -2,6 +2,7 @@ package nl.novi.fsdbe.controller;
 
 import nl.novi.fsdbe.model.Deviation;
 import nl.novi.fsdbe.model.Medicine;
+import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
 import org.junit.jupiter.api.Test;
@@ -70,8 +71,11 @@ public class DeviationControllerIntegrationTest {
 
     @Test
     public void testEndpointDeviations() throws Exception {
+        Planning planning = new Planning();
         Deviation deviation = new Deviation();
         deviation.setResolution("Opgelost");
+        deviation.setFinding("Dat ging niet OK");
+        deviation.setEnabled(true);
         List<Deviation> allDeviations = Arrays.asList(deviation);
 
         BDDMockito.given(deviationService.getDeviations()).willReturn(allDeviations);
@@ -80,6 +84,8 @@ public class DeviationControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].finding", is(deviation.getFinding())))
+                .andExpect(jsonPath("$[0].enabled", is(deviation.isEnabled())))
                 .andExpect(jsonPath("$[0].resolution", is(deviation.getResolution())));
     }
 }

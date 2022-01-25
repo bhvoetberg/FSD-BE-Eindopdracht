@@ -71,6 +71,11 @@ public class MedicineControllerIntegrationTest {
     public void testEndpointMedicines() throws Exception {
         Medicine medicine = new Medicine();
         medicine.setMedName("Paracetamol");
+        medicine.setInstructions("Geen bijzonderheden");
+        medicine.setPerilous(false);
+        medicine.setUrlExternalInfo("www.google.nl");
+        medicine.setDosageForm("Tablet");
+        medicine.setAdministerMethod("Oraal");
         List<Medicine> allMedicines = Arrays.asList(medicine);
 
         BDDMockito.given(medicineService.getMedicines()).willReturn(allMedicines);
@@ -79,6 +84,12 @@ public class MedicineControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].instructions", is(medicine.getInstructions())))
+                .andExpect(jsonPath("$[0].perilous", is(medicine.isPerilous())))
+                .andExpect(jsonPath("$[0].urlExternalInfo", is(medicine.getUrlExternalInfo())))
+                .andExpect(jsonPath("$[0].dosageForm", is(medicine.getDosageForm())))
+                .andExpect(jsonPath("$[0].administerMethod", is(medicine.getAdministerMethod())))
+
                 .andExpect(jsonPath("$[0].medName", is(medicine.getMedName())));
 
 
