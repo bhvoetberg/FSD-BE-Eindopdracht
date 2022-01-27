@@ -66,6 +66,9 @@ public class PlanningService {
             if (planning.getPlanTime() != null && !planning.getPlanTime().isEmpty()) {
                 storedPlanning.setPlanTime(planning.getPlanTime());
             }
+            if (planning.getActPerformed() != null && !planning.getActPerformed().isEmpty()) {
+                storedPlanning.setActPerformed(planning.getActPerformed());
+            }
             if (planning.getQuantity() != null) {
                 storedPlanning.setQuantity(planning.getQuantity());
             }

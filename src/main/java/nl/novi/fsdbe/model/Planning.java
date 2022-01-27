@@ -22,6 +22,17 @@ public class Planning {
     @Column
     private String planTime;
 
+    @Column
+    private String actPerformed;
+
+    public String getActPerformed() {
+        return actPerformed;
+    }
+
+    public void setActPerformed(String actPerformed) {
+        this.actPerformed = actPerformed;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
@@ -40,7 +51,6 @@ public class Planning {
     @JsonIgnoreProperties("plannings")
     @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
-
 
     public Integer getQuantity() {
         return quantity;
