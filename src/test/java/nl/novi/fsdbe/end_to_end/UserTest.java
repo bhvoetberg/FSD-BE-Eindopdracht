@@ -46,7 +46,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
             mockMvc.perform(get("/users").contentType(MediaType.APPLICATION_JSON))
                     .andExpect(status().isOk())
-                    .andExpect(jsonPath("$", hasSize(3)))
+                    .andExpect(jsonPath("$", hasSize(4)))
                     .andExpect(jsonPath("$[1].username", startsWith("a")));
         }
     }
