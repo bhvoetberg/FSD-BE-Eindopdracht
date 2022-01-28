@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
     @WebMvcTest
     @ContextConfiguration
     @EnableConfigurationProperties
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
+    @WithMockUser(username = "user", roles = {"USER"})
     public class EmployeeControllerIntegrationTest {
 
         @Autowired
