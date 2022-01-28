@@ -48,7 +48,6 @@ public class ClientService {
         }
     }
 
-
     public Long addClient(Client client) {
         Client newClient = clientRepository.save(client);
         return newClient.getId();
@@ -102,7 +101,7 @@ public class ClientService {
             if (client.getTelPharmacy() != null && !client.getTelPharmacy().isEmpty()) {
                 storedClient.setTelPharmacy(client.getTelPharmacy());
             }
-            System.out.println(client.getPhoto());
+
             if (client.getPhoto() != null && !client.getPhoto().isEmpty()) {
                 storedClient.setPhoto(client.getPhoto());
             }
