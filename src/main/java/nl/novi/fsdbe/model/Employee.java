@@ -12,4 +12,11 @@ public class Employee extends Person {
     @Column
     private String functionName;
 
+    public String getFunctionName() {
+        return functionName;
+    }
+
+    public void setFunctionName(String functionName) {
+        this.functionName = functionName;
+    }
 }

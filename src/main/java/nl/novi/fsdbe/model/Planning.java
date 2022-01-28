@@ -1,32 +1,119 @@
 package nl.novi.fsdbe.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "planning")
 public class Planning {
 
     @Column
-    private String medName;
-
-    @Column
     private Integer quantity;
 
     @Column
-    private Integer frequencyPerDay;
+    private boolean enabled;
 
     @Column
-    private boolean activePlanning;
+    private String planDate;
 
     @Column
-    private String planDateTime;
+    private String planTime;
+
+    @Column
+    private String actPerformed;
+
+    public String getActPerformed() {
+        return actPerformed;
+    }
+
+    public void setActPerformed(String actPerformed) {
+        this.actPerformed = actPerformed;
+    }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, unique = true)
     private Long id;
 
+    @ManyToOne
+    @JsonIgnoreProperties("plannings")
+    @JoinColumn(name = "medicine_id", referencedColumnName = "id")
+    private Medicine medicine;
+
+    @OneToOne
+    @JoinColumn(name = "deviation_id", referencedColumnName = "id")
+    private Deviation deviation;
+
+    @ManyToOne
+    @JsonIgnoreProperties("plannings")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
+    private Client client;
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getPlanDate() {
+        return planDate;
+    }
+
+    public void setPlanDate(String planDate) {
+        this.planDate = planDate;
+    }
+
+    public String getPlanTime() {
+        return planTime;
+    }
+
+    public void setPlanTime(String planTime) {
+        this.planTime = planTime;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Medicine getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(Medicine medicine) {
+        this.medicine = medicine;
+    }
+
+    public Deviation getDeviation() {
+        return deviation;
+    }
+
+    public void setDeviation(Deviation deviation) {
+        this.deviation = deviation;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 }
 
