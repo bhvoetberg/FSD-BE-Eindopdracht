@@ -6,34 +6,32 @@ VALUES ('Supervisor', 'Rober', 'Voetberg', true),
        ('Beheerder', 'Stefan', 'Voetberg', true);
 
 INSERT INTO users (username, password, enabled, employee_id)
-VALUES ('user', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 3),
-       ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 5),
+VALUES ('multiroles', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 1),
+       ('supervisor', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 2),
+       ('user', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 3),
        ('inactive', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', FALSE, 4),
-       ('multiroles', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 1),
-       ('supervisor', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 2);
+       ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 5);
 
-
-UPDATE employees
-SET user_id = 'supervisor'
-WHERE id = '1';
-
-UPDATE employees
-SET user_id = 'inactive'
-WHERE id = '2';
 
 UPDATE employees
 SET user_id = 'multiroles'
-WHERE id = '3';
+WHERE id = '1';
+
+UPDATE employees
+SET user_id = 'supervisor'
+WHERE id = '2';
 
 UPDATE employees
 SET user_id = 'user'
+WHERE id = '3';
+
+UPDATE employees
+SET user_id = 'inactive'
 WHERE id = '4';
 
 UPDATE employees
 SET user_id = 'admin'
 WHERE id = '5';
-
-
 
 
 INSERT INTO authorities (username, authority)
