@@ -12,6 +12,9 @@ VALUES ('multiroles', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1
        ('inactive', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', FALSE, 4),
        ('admin', '$2a$10$wPHxwfsfTnOJAdgYcerBt.utdAvC24B/DWfuXfzKBSDHO0etB1ica', TRUE, 5);
 
+UPDATE employees
+SET user_id = 'user'
+WHERE id = '3';
 
 UPDATE employees
 SET user_id = 'multiroles'
