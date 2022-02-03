@@ -9,6 +9,7 @@ import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -26,70 +27,70 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-    @WebMvcTest
-    @ContextConfiguration
-    @EnableConfigurationProperties
-    @WithMockUser(username = "user", roles = {"USER"})
-    public class ClientControllerIntegrationTest {
+@WebMvcTest
+@ContextConfiguration
+@EnableConfigurationProperties
+@WithMockUser(username = "user", roles = {"USER"})
+public class ClientControllerIntegrationTest {
 
-        @Autowired
-        private MockMvc mvc;
+    @Autowired
+    private MockMvc mvc;
 
-        @MockBean
-        private MedicineService medicineService;
+    @MockBean
+    private MedicineService medicineService;
 
-        @MockBean
-        private UserAuthenticateService userAuthenticateService;
+    @MockBean
+    private UserAuthenticateService userAuthenticateService;
 
-        @MockBean
-        private ClientService clientService;
+    @MockBean
+    private ClientService clientService;
 
-        @MockBean
-        private ClientPlanningService clientPlanningService;
+    @MockBean
+    private ClientPlanningService clientPlanningService;
 
-        @MockBean
-        private DeviationService deviationService;
+    @MockBean
+    private DeviationService deviationService;
 
-        @MockBean
-        private EmployeeService employeeService;
+    @MockBean
+    private EmployeeService employeeService;
 
-        @MockBean
-        private MedicinePlanningService medicinePlanningService;
+    @MockBean
+    private MedicinePlanningService medicinePlanningService;
 
-        @MockBean
-        private PlanningService planningService;
+    @MockBean
+    private PlanningService planningService;
 
-        @MockBean
-        private UserService userService;
+    @MockBean
+    private UserService userService;
 
-        @MockBean
-        DataSource dataSource;
+    @MockBean
+    DataSource dataSource;
 
-        @MockBean
-        JwtUtil jwtUtil;
+    @MockBean
+    JwtUtil jwtUtil;
 
-        @Test
-        public void testEndpointClients() throws Exception {
-            Client client = new Client();
-            client.setLastName("Jansen");
-            client.setRoomNumber("101");
-            client.setTelPharmacy("020-123456");
-            client.setTelGeneralPractitioner("030-654321");
-            client.setSeeOwnMedication(true);
-            List<Client> allClients = Arrays.asList(client);
+    @Test
+    public void testEndpointClients() throws Exception {
+        Client client = new Client();
+        client.setLastName("Jansen");
+        client.setRoomNumber("101");
+        client.setTelPharmacy("020-123456");
+        client.setTelGeneralPractitioner("030-654321");
+        client.setSeeOwnMedication(true);
+        List<Client> allClients = Arrays.asList(client);
 
-            BDDMockito.given(clientService.getClients()).willReturn(allClients);
+        BDDMockito.given(clientService.getClients()).willReturn(allClients);
 
-            mvc.perform(get("/clients")
-                            .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$", hasSize(1)))
-                    .andExpect(jsonPath("$[0].roomNumber", is(client.getRoomNumber())))
-                    .andExpect(jsonPath("$[0].telPharmacy", is(client.getTelPharmacy())))
-                    .andExpect(jsonPath("$[0].telGeneralPractitioner", is(client.getTelGeneralPractitioner())))
-                    .andExpect(jsonPath("$[0].enabled", is(client.isEnabled())))
-                    .andExpect(jsonPath("$[0].lastName", is(client.getLastName())));
-
-
-        }
+        mvc.perform(get("/clients")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].roomNumber", is(client.getRoomNumber())))
+                .andExpect(jsonPath("$[0].telPharmacy", is(client.getTelPharmacy())))
+                .andExpect(jsonPath("$[0].telGeneralPractitioner", is(client.getTelGeneralPractitioner())))
+                .andExpect(jsonPath("$[0].enabled", is(client.isEnabled())))
+                .andExpect(jsonPath("$[0].lastName", is(client.getLastName())));
     }
+
+
+}

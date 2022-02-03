@@ -26,11 +26,11 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getClient(id));
     }
 
-    @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Object> deleteClient(@PathVariable("id") Long id) {
-        clientService.deleteClient(id);
-        return ResponseEntity.noContent().build();
-    }
+//    @DeleteMapping(value = "/{id}")
+//    public ResponseEntity<Object> deleteClient(@PathVariable("id") Long id) {
+//        clientService.deleteClient(id);
+//        return ResponseEntity.noContent().build();
+//    }
 
     @DeleteMapping(value = "/{id}/photo")
     public ResponseEntity<Object> deleteClientPhoto(@PathVariable("id") Long id) {

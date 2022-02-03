@@ -84,13 +84,7 @@ public class UserService {
         }
         else {
             User user = userOptional.get();
-            System.out.println("Vooraf");
-            System.out.printf("User" + user.getUsername());
-            System.out.println("---");
-            System.out.println(user.getPassword());
             user.setPassword(passwordEncoder.encode(newUser.getPassword()));
-            System.out.println("Achteraf");
-            System.out.println(user.getPassword());
             user.setEmail(newUser.getEmail());
             user.setEnabled(newUser.isEnabled());
             userRepository.save(user);
