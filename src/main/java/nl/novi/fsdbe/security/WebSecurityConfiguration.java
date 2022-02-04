@@ -78,7 +78,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/clientplanning/**").hasRole("SUPERVISOR")
                 .antMatchers("/medicine/**").hasAnyRole("USER", "SUPERVISOR")
                 .antMatchers("/medicines/**").hasAnyRole("USER", "SUPERVISOR")
-                .antMatchers("/planning/**").hasRole("USER")
+                .antMatchers("/planning/**").hasAnyRole("USER", "SUPERVISOR")
                 .antMatchers("/clients/**").hasAnyRole("USER", "SUPERVISOR")
                 .antMatchers(POST,"/authenticate").permitAll()
                 .antMatchers(GET,"/public").permitAll()

@@ -69,7 +69,7 @@ VALUES (false, 'Bevinding 1', 'Oplossing 1'),
        (true, 'Bevinding 3', 'Oplossing 3');
 
 INSERT INTO planning (enabled, act_performed, quantity, plan_date, plan_time, client_id, deviation_id, medicine_id)
-VALUES (true, null, 2, '15-1-2022', '08:00', 2, 1, 1),
-       (false, 'Toegediend', 1, '15-1-2022', '12:00', 4, 2, 2),
-       (true, null, 1, '15-1-2022', '16:00', 2, null, 3),
-       (true, null, 2, '15-1-2022', '20:00', 3, 3, 3);
+VALUES (true, null, 2, '2022-02-10', '08:00', 2, 1, 1),
+       (false, 'Toegediend', 1, '2022-02-10', '12:00', 4, 2, 2),
+       (true, null, 1, '2022-02-10', '16:00', 2, null, 3),
+       (true, null, 2, '2022-02-10', '20:00', 3, 3, 3);
