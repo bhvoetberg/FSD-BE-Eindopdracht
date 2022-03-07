@@ -3,8 +3,6 @@ package nl.novi.fsdbe.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "planning")
@@ -98,18 +96,6 @@ public class Planning {
 
     public void setMedicine(Medicine medicine) {
         this.medicine = medicine;
-    }
-
-    public Deviation getDeviation() {
-        return deviation;
-    }
-
-    public void setDeviation(Deviation deviation) {
-        this.deviation = deviation;
-    }
-
-    public Client getClient() {
-        return client;
     }
 
     public void setClient(Client client) {

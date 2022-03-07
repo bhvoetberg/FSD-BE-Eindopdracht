@@ -83,10 +83,6 @@ public class Client extends Person {
         return plannings;
     }
 
-    public void setPlannings(List<Planning> plannings) {
-        this.plannings = plannings;
-    }
-
     public String getPhoto() {
         return photo;
     }

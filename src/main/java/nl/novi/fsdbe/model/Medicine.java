@@ -100,7 +100,4 @@ public class Medicine {
         return plannings;
     }
 
-    public void setPlannings(List<Planning> plannings) {
-        this.plannings = plannings;
-    }
 }
