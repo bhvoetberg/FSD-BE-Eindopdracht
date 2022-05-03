@@ -24,8 +24,8 @@ class ClientServiceTest {
     @InjectMocks
     private ClientService clientService;
 
-    @Captor
-    ArgumentCaptor<Client> argumentCaptor;
+//    @Captor
+//    ArgumentCaptor<Client> argumentCaptor;
 
     @Test
     void getClients() {
@@ -47,6 +47,5 @@ class ClientServiceTest {
         verify(clientRepository, times(1)).findAll();
         assertThat(clientList.size()).isEqualTo(3);
         assertThat(clientList.get(0).getLastName()).isEqualTo("Jansen");
-
     }
 }
