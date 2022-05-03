@@ -2,10 +2,8 @@ package nl.novi.fsdbe.service;
 
 import nl.novi.fsdbe.exception.RecordNotFoundException;
 import nl.novi.fsdbe.model.Client;
-import nl.novi.fsdbe.model.Medicine;
 import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.repository.ClientRepository;
-import nl.novi.fsdbe.repository.MedicineRepository;
 import nl.novi.fsdbe.repository.PlanningRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -98,6 +98,10 @@ public class Planning {
         this.medicine = medicine;
     }
 
+    public Client getClient() {
+        return client;
+    }
+
     public void setClient(Client client) {
         this.client = client;
     }

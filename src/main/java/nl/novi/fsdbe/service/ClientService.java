@@ -28,14 +28,6 @@ public class ClientService {
         }
     }
 
-    public void deleteClient(Long id) {
-        if (clientRepository.existsById(id)) {
-            clientRepository.deleteById(id);
-        } else {
-            throw new RecordNotFoundException("ID does not exist!!!");
-        }
-    }
-
     public void deleteClientPhoto(Long id) {
         Optional<Client> optionalClient = clientRepository.findById(id);
         if (optionalClient.isPresent()) {
