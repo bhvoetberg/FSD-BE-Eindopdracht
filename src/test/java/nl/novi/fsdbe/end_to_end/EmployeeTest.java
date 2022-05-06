@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = MedPlanApplication.class)
 @AutoConfigureMockMvc
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
+@WithMockUser(username = "user")
 
 public class EmployeeTest {
 

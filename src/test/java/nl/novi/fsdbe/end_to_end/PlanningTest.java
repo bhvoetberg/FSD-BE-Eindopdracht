@@ -15,37 +15,37 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
-    @SpringBootTest(classes = MedPlanApplication.class)
-    @AutoConfigureMockMvc
-    @EnableConfigurationProperties
-    @WithMockUser(username = "user", roles = {"USER"})
+@SpringBootTest(classes = MedPlanApplication.class)
+@AutoConfigureMockMvc
+@EnableConfigurationProperties
+@WithMockUser(username = "user")
 
-    public class PlanningTest {
+public class PlanningTest {
 
-        @Autowired
-        private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-        @Test
-        void shouldReturn200() throws Exception {
-            mockMvc.perform(get("/planning"))
-                    .andExpect(status().isOk());
-        }
-
-        @Test
-        void shouldReturnJson() throws Exception {
-
-            mockMvc.perform(get("/planning").contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                    .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
-
-        }
-
-        @Test
-        void shouldReturnRecords() throws Exception {
-
-            mockMvc.perform(get("/planning").contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$", hasSize(4)));
-        }
+    @Test
+    void shouldReturn200() throws Exception {
+        mockMvc.perform(get("/planning"))
+                .andExpect(status().isOk());
     }
+
+    @Test
+    void shouldReturnJson() throws Exception {
+
+        mockMvc.perform(get("/planning").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
+
+    }
+
+    @Test
+    void shouldReturnRecords() throws Exception {
+
+        mockMvc.perform(get("/planning").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(4)));
+    }
+}
 
