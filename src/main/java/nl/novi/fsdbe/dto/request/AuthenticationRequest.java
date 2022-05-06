@@ -11,8 +11,6 @@ public class AuthenticationRequest {
     @Size(min=8)
     private String password;
 
-    public AuthenticationRequest() {
-    }
     public AuthenticationRequest(String username, String password) {
         this.username = username;
         this.password = password;

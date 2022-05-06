@@ -44,9 +44,6 @@ public class UserService {
         return userRepository.findById(username);
     }
 
-    public boolean userExists(String username) {
-        return userRepository.existsById(username);
-    }
 
     public String createUser(UserPostRequest userPostRequest) {
         try {
@@ -139,8 +136,7 @@ public class UserService {
         long countUpper = password.chars().filter(ch -> ch >= 'A' && ch <= 'Z').count();
         long countSpecial = password.chars().filter(ch -> SPECIAL_CHARS.indexOf(ch) >= 0).count();
 
-        boolean validPassword = true;
-        if (password.length() < MIN_LENGTH) validPassword = false;
+        boolean validPassword = password.length() >= MIN_LENGTH;
         if (countLower < MIN_LOWER) validPassword = false;
         if (countUpper < MIN_UPPER) validPassword = false;
         if (countDigit < MIN_DIGITS) validPassword = false;
