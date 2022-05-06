@@ -1,8 +1,6 @@
 package nl.novi.fsdbe.controller;
 
 import nl.novi.fsdbe.model.Deviation;
-import nl.novi.fsdbe.model.Medicine;
-import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
 import org.junit.jupiter.api.Test;
@@ -17,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -30,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
+@WithMockUser(username = "user")
 public class DeviationControllerIntegrationTest {
 
     @Autowired
@@ -71,12 +68,11 @@ public class DeviationControllerIntegrationTest {
 
     @Test
     public void testEndpointDeviations() throws Exception {
-        Planning planning = new Planning();
         Deviation deviation = new Deviation();
         deviation.setResolution("Opgelost");
         deviation.setFinding("Dat ging niet OK");
         deviation.setEnabled(true);
-        List<Deviation> allDeviations = Arrays.asList(deviation);
+        List<Deviation> allDeviations = List.of(deviation);
 
         BDDMockito.given(deviationService.getDeviations()).willReturn(allDeviations);
 
