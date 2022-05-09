@@ -9,17 +9,12 @@ class PlanningTest {
 
     private Planning planning;
 
-    private Client client;
-    private Medicine medicine;
-
     @BeforeEach
     public void setup() {
         this.planning = new Planning();
         this.planning.setPlanDate("01-01-2022");
         this.planning.setPlanTime("10:00");
-        this.planning.setClient(client);
         this.planning.setEnabled(true);
-        this.planning.setMedicine(medicine);
         this.planning.setQuantity(5);
     }
 
@@ -45,13 +40,15 @@ class PlanningTest {
 
     @Test
     void setMedicine() {
-        this.medicine = new Medicine();
-        assertEquals(medicine.getId(), planning.getMedicine());
+        Medicine medicine = new Medicine();
+        this.planning.setMedicine(medicine);
+        assertEquals(medicine, planning.getMedicine());
     }
 
     @Test
     void setClient() {
-        this.client = new Client();
-        assertEquals(client.getId(), planning.getMedicine());
+        Client client = new Client();
+        this.planning.setClient(client);
+        assertEquals(client, planning.getClient());
     }
 }
