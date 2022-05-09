@@ -64,8 +64,6 @@ class ClientServiceTest {
     }
 
 
-
-
     @Test
     @DisplayName("Should find 3 clients, first lastname Jansen")
     void getClients() {
