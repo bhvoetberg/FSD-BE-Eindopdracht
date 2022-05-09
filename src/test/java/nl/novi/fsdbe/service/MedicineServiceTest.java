@@ -9,13 +9,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.MediaTypeEditor;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+
 
 @ExtendWith(MockitoExtension.class)
 class MedicineServiceTest {
@@ -58,21 +58,6 @@ class MedicineServiceTest {
         given(medicineRepository.findById(123L)).willReturn(Optional.of(medicine));
         Medicine savedMedicine = medicineService.getMedicine(medicine.getId());
         assertThat(savedMedicine).isNotNull();
-    }
-
-    @Test
-    @DisplayName("Should update medicine")
-    public void givenMedicineObject_whenUpdate_thenReturnUpdatedMedicine() {
-        given(medicineRepository.save(medicine)).willReturn(medicine);
-
-        medicine.setMedName("Updated");
-//        System.out.println(medicine.getMedName());
-        System.out.println(medicine.getId());
-
-//        Medicine updatedMedicine = medicineService.updateMedicine(medicine.getId(), medicine);
-
-
-//        assertThat(updatedMedicine.getMedName()).isEqualTo("Updated");
     }
 
 }
