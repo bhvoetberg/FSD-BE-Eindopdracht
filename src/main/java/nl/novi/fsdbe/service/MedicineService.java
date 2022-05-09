@@ -40,7 +40,7 @@ public class MedicineService {
         return newMedicine.getId();
     }
 
-    public void updateMedicine(Long id, Medicine medicine) {
+    public Medicine updateMedicine(Long id, Medicine medicine) {
         Optional<Medicine> optionalMedicine = medicineRepository.findById(id);
 
         if (optionalMedicine.isPresent()) {
@@ -52,6 +52,7 @@ public class MedicineService {
         else {
             throw new RecordNotFoundException("ID does not exist!");
         }
+        return medicine;
     }
 
     public void partialUpdateMedicine(Long id, Medicine medicine) {

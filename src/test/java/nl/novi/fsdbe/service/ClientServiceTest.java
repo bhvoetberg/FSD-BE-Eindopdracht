@@ -2,6 +2,7 @@ package nl.novi.fsdbe.service;
 
 import nl.novi.fsdbe.model.Client;
 import nl.novi.fsdbe.repository.ClientRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -28,6 +29,7 @@ class ClientServiceTest {
 //    ArgumentCaptor<Client> argumentCaptor;
 
     @Test
+    @DisplayName("Should find 3 clients, 1 lastname Jansen")
     void getClients() {
         List<Client> clientList = new ArrayList<>();
         Client client1 = new Client();
@@ -48,4 +50,11 @@ class ClientServiceTest {
         assertThat(clientList.size()).isEqualTo(3);
         assertThat(clientList.get(0).getLastName()).isEqualTo("Jansen");
     }
+
+    @Test
+    public void shouldSaveNewClient() {
+        Client client = new Client();
+
+    }
+
 }
