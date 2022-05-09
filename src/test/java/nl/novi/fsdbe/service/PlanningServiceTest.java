@@ -55,7 +55,7 @@ class PlanningServiceTest {
     @Test
     @DisplayName("Should return planning by ID")
     public void givenPlanningId_thenReturnPlanningObject() {
-        given(planningRepository.findById(123L)).willReturn(Optional.of(planning));
+        given(planningRepository.findById(planning.getId())).willReturn(Optional.of(planning));
 
         Planning savedPlanning = planningService.getPlanning(planning.getId());
 
