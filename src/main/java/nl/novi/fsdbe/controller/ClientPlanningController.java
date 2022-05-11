@@ -1,6 +1,5 @@
 package nl.novi.fsdbe.controller;
 
-import nl.novi.fsdbe.model.Planning;
 import nl.novi.fsdbe.service.ClientPlanningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -19,8 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = MedPlanApplication.class)
 @AutoConfigureMockMvc
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
-
+@WithMockUser(username = "user")
 class MedicineTest {
 
     @Autowired
@@ -47,6 +46,6 @@ class MedicineTest {
         mockMvc.perform(get("/medicines").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(3)))
-               .andExpect(jsonPath("$[2].medName", startsWith("O")));
+                .andExpect(jsonPath("$[2].medName", startsWith("O")));
     }
 }

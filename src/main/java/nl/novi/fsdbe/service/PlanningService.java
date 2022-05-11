@@ -75,7 +75,10 @@ public class PlanningService {
             if (planning.isEnabled() == true || planning.isEnabled() == false ) {
                 storedPlanning.setEnabled(planning.isEnabled());
             }
-            planningRepository.save(storedPlanning);
+            if (storedPlanning != null) {
+                planningRepository.save(storedPlanning);
+            }
+
         } else {
             throw new RecordNotFoundException("No valid update data present!");
         }

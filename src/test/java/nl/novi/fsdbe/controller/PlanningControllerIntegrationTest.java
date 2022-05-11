@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -27,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
+@WithMockUser(username = "user")
 public class PlanningControllerIntegrationTest {
 
     @Autowired
@@ -72,7 +71,7 @@ public class PlanningControllerIntegrationTest {
         Planning planning = new Planning();
         planning.setEnabled(true);
         planning.setQuantity(3);
-        List<Planning> allPlanning = Arrays.asList(planning);
+        List<Planning> allPlanning = List.of(planning);
 
         BDDMockito.given(planningService.getPlanning()).willReturn(allPlanning);
 

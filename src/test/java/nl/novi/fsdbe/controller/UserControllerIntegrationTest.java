@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -27,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
-@WithMockUser(username = "admin", roles = {"ADMIN"})
+@WithMockUser(username = "admin")
 public class UserControllerIntegrationTest {
 
     @Autowired
@@ -70,7 +69,7 @@ public class UserControllerIntegrationTest {
     public void testEndpointUsers() throws Exception {
         User user = new User();
         user.setUsername("user");
-        List<User> allUsers = Arrays.asList(user);
+        List<User> allUsers = List.of(user);
 
         BDDMockito.given(userService.getUsers()).willReturn(allUsers);
 

@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
+
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
+@WithMockUser(username = "user")
 public class MedicineControllerIntegrationTest {
 
     @Autowired
@@ -76,7 +76,7 @@ public class MedicineControllerIntegrationTest {
         medicine.setUrlExternalInfo("www.google.nl");
         medicine.setDosageForm("Tablet");
         medicine.setAdministerMethod("Oraal");
-        List<Medicine> allMedicines = Arrays.asList(medicine);
+        List<Medicine> allMedicines = List.of(medicine);
 
         BDDMockito.given(medicineService.getMedicines()).willReturn(allMedicines);
 

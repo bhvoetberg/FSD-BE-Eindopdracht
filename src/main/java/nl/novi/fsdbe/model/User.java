@@ -40,10 +40,6 @@ public class User {
         return employee;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public String getUsername() {
         return username;
     }

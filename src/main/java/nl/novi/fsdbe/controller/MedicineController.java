@@ -2,7 +2,6 @@ package nl.novi.fsdbe.controller;
 
 
 import nl.novi.fsdbe.model.Medicine;
-import nl.novi.fsdbe.service.MedicinePlanningService;
 import nl.novi.fsdbe.service.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

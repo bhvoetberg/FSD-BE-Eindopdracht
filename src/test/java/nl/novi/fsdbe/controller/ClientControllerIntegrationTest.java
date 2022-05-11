@@ -1,7 +1,6 @@
 package nl.novi.fsdbe.controller;
 
 import nl.novi.fsdbe.model.Client;
-import nl.novi.fsdbe.model.Medicine;
 import nl.novi.fsdbe.security.JwtUtil;
 import nl.novi.fsdbe.service.*;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,6 @@ import org.mockito.BDDMockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -17,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.sql.DataSource;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
@@ -30,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest
 @ContextConfiguration
 @EnableConfigurationProperties
-@WithMockUser(username = "user", roles = {"USER"})
+@WithMockUser(username = "user")
 public class ClientControllerIntegrationTest {
 
     @Autowired
@@ -77,12 +74,11 @@ public class ClientControllerIntegrationTest {
         client.setTelPharmacy("020-123456");
         client.setTelGeneralPractitioner("030-654321");
         client.setSeeOwnMedication(true);
-        List<Client> allClients = Arrays.asList(client);
+        List<Client> allClients = List.of(client);
 
         BDDMockito.given(clientService.getClients()).willReturn(allClients);
 
-        mvc.perform(get("/clients")
-                        .contentType(MediaType.APPLICATION_JSON))
+        mvc.perform(get("/clients").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].roomNumber", is(client.getRoomNumber())))
@@ -91,6 +87,5 @@ public class ClientControllerIntegrationTest {
                 .andExpect(jsonPath("$[0].enabled", is(client.isEnabled())))
                 .andExpect(jsonPath("$[0].lastName", is(client.getLastName())));
     }
-
 
 }
