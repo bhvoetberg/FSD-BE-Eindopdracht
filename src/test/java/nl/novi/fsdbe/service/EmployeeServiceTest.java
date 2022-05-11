@@ -50,7 +50,7 @@ class EmployeeServiceTest {
 
     @Test
     @DisplayName("Should return 2 employees of which the first with firstname 'Bert'")
-    void getEmployees() {
+    public void getEmployees() {
 
         when(employeeRepository.findAll()).thenReturn(employeeList);
 
