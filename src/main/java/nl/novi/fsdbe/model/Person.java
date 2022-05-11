@@ -3,7 +3,7 @@ package nl.novi.fsdbe.model;
 import javax.persistence.*;
 
 @MappedSuperclass
-public class Person {
+public abstract class Person {
 
     @Column(nullable = false)
     private String firstName;
