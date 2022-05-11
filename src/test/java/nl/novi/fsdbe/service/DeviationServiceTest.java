@@ -1,6 +1,5 @@
 package nl.novi.fsdbe.service;
 
-import nl.novi.fsdbe.exception.RecordNotFoundException;
 import nl.novi.fsdbe.model.Deviation;
 import nl.novi.fsdbe.repository.DeviationRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,14 +25,12 @@ class DeviationServiceTest {
     @InjectMocks
     private DeviationService deviationService;
 
-    private Deviation deviation1;
-    private Deviation deviation2;
-    private List<Deviation> deviationList = new ArrayList<>();
+    private final List<Deviation> deviationList = new ArrayList<>();
 
     @BeforeEach
     public void setup() {
-        this.deviation1 = new Deviation();
-        this.deviation2 = new Deviation();
+        Deviation deviation1 = new Deviation();
+        Deviation deviation2 = new Deviation();
 
         deviation1.setFinding("Finding1");
         deviation1.setResolution("Resolution1");
@@ -42,7 +39,6 @@ class DeviationServiceTest {
 
         this.deviationList.add(deviation1);
         this.deviationList.add(deviation2);
-
     }
 
     @Test
